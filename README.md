@@ -20,4 +20,4 @@ Describe the project and its functionality
 
 This webpage is deployed to GitHub pages
 
-Deployment Link :
+Deployment Link : https://github.com/Azionne/se_project_spots.git
