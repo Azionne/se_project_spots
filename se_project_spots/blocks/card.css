@@ -26,15 +26,26 @@
   opacity: 40%;
 }
 
+.card__like-btn:hover {
+  background-image: url(../images/hover-like.svg);
+  cursor: pointer;
+}
+
 .card__content {
   display: flex;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 12px;
 }
 
 @media screen and (max-width: 627px) {
   .card__image {
     height: 288px;
+    width: 288px;
+  }
+
+  .card__content {
+    margin-top: 12px;
   }
 }

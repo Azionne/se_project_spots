@@ -23,7 +23,6 @@
   background-color: transparent;
   border: none;
   align-self: flex-start;
-
   margin-top: auto;
   font-family: Poppins, Arial, Helvetica, sans-serif;
 }
@@ -67,6 +66,16 @@
   align-self: end;
   background-color: black;
   color: #ffff;
+  border-radius: 8px;
+}
+
+.profile__add-btn:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.profile__add-img {
+  padding-right: 8px;
 }
 
 @media screen and (max-width: 627px) {
@@ -94,19 +103,17 @@
 
   .profile__column {
     margin: 0 0 20px;
-    text-align: center;
     align-items: center;
-  }
-
-  .profile__edit-btn {
-    align-items: center;
-    text-align: center;
   }
 
   .profile__description {
     font-size: 16px;
     margin: 0 0 32px;
     max-width: 288px;
+  }
+
+  .profile__edit-btn {
+    align-self: center;
   }
 
   .profile__add-btn {
