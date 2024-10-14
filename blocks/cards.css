@@ -1,6 +1,5 @@
 .cards {
   padding-top: 20px;
-  padding-bottom: 60px;
 }
 
 .cards__list {
@@ -15,5 +14,10 @@
 @media screen and (max-width: 627px) {
   .cards__list {
     grid-template-columns: repeat(auto-fit, 288px);
+    row-gap: 20px;
+    column-gap: 20px;
   }
+}
+
+@media screen and (max-width: 320px) {
 }
