@@ -15,3 +15,5 @@ This app uses HTML and CSS design. We've created a responsive desion for screens
 This webpage is deployed to GitHub pages
 
 Deployment Link :https://azionne.github.io/se_project_spots/
+
+Video link : https://drive.google.com/file/d/1kVnZ6q8_YH-cqTQPqJUeY_-jvz6p3Hp2/view?usp=sharing
