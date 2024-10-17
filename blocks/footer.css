@@ -2,10 +2,18 @@
   text-align: center;
 }
 
-.footer__info {
+.footer__copyright {
   font-family: Poppins, Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 16px;
-  text-align: left;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+@media screen and (max-width: 627px) {
+  .footer__copyright {
+    margin: 60px 92px;
+  }
 }

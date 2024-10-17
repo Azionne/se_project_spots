@@ -1,23 +1,17 @@
 # Spots
 
-image sharing site
+Project name: Spots
 
 ## Description
 
-Describe the project and its functionality
+This project is social media app that displays profile of historical pioneer's achievements and bio while also allowing creatives to display photos of said work.
 
 ## Tech Stack
 
--HTML
--CSS
--Responsive Design
-
-
-#Pics and gifs
-
+This app uses HTML and CSS design. We've created a responsive desion for screens up to 1440 px and as a low as 320 px. We were also able to implement a design that hides text overflow.
 
 #Deployment
 
 This webpage is deployed to GitHub pages
 
-Deployment Link : https://github.com/Azionne/se_project_spots.git
+Deployment Link :https://azionne.github.io/se_project_spots/

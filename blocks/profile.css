@@ -7,6 +7,7 @@
 }
 
 .profile__avatar {
+  object-fit: cover;
   margin-right: 20px;
   height: 190px;
   width: 190px;
@@ -25,14 +26,18 @@
   align-self: flex-start;
   margin-top: auto;
   font-family: Poppins, Arial, Helvetica, sans-serif;
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.profile__edit-btn:hover {
+  opacity: none;
 }
 
 .profile__image {
 }
 .profile__name {
   margin: 0 0 12px;
-  width: 420px;
-  height: 32px;
   font-family: Poppins, Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 32px;
@@ -47,7 +52,7 @@
 
 .profile__description {
   margin: 0;
-  height: 16px;
+
   font-family: Poppins, Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -56,6 +61,9 @@
   white-space: nowrap;
   overflow: hidden;
   max-width: 420px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .profile__add-btn {
