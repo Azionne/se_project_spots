@@ -31,7 +31,7 @@
 }
 
 .profile__edit-btn:hover {
-  opacity: none;
+  opacity: 1;
 }
 
 .profile__image {
