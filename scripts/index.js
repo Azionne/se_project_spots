@@ -24,6 +24,10 @@ const initialCards = [
     name: "Mountain house",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
+  {
+    name: "Golden Gate Bridge",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+  },
 ];
 
 //Profile elements
@@ -85,7 +89,6 @@ function getCardElement(data) {
     openModal(previewModal);
     previewModalImageEl.src = data.link;
     previewModalCaptionEl.textContent = data.name;
-    previewModalImageEl.alt = data.name;
     openModal(previewModal);
   });
 
@@ -117,7 +120,7 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
 
-  closeModal(cardModal);
+  evt.target.reset();
 }
 
 //Modal events
@@ -127,9 +130,17 @@ profileEditBtn.addEventListener("click", () => {
   editModalDescriptionInput.value = profileDescription.textContent;
   openModal(editModal);
 });
+
 closeModalBtn.addEventListener("click", () => {
   closeModal(editModal);
 });
+
+/*const closeButtons = document.querySelectorAll(".modal__close-btn");
+
+closeButtons.forEach((button) => {
+  const popup = button.closest(".modal");
+  button.addEventListener("click", () => closePopup(popup));
+});*/
 
 cardModalBtn.addEventListener("click", () => {
   openModal(cardModal);
