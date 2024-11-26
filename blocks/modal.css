@@ -75,31 +75,31 @@
   height: 40px;
 }
 
-/*.modal__close-btn:hover {
+.modal__close-btn:hover {
   background-image: url(../images/close-hover.svg);
   cursor: pointer;
   background-repeat: no-repeat;
   transition: opacity 0.3s ease;
 
   border: none;
-} */
+}
 
 .modal__close-btn_type_preview {
-  background-image: url(../images/close-light.svg);
+  background-image: url(../images/modal\ preview\ default\ close.svg);
   background-color: transparent;
   top: -4px;
   right: -53px;
   background-repeat: no-repeat;
 }
 
-/*.modal__close-btn_type_preview:hover {
-  background-image: url(../images/close-hover.svg);
+.modal__close-btn_type_preview:hover {
+  background-image: url(../images/modal\ preview\ hover\ close.svg);
   cursor: pointer;
   background-repeat: no-repeat;
   transition: opacity 0.3s ease;
 
   border: none;
-} */
+}
 
 .modal__title {
   font-family: Poppins, Arial, Helvetica, sans-serif;
@@ -134,13 +134,15 @@
   object-fit: cover;
   font-weight: 500;
   color: #212121;
-  opacity: 30%;
+  /*opacity: 30%; */
 }
+
+/*
 .modal__input:hover {
   cursor: pointer;
   color: #212121;
   opacity: 100%;
-}
+} */
 
 .modal__submit-btn {
   font-size: 16px;
@@ -171,6 +173,7 @@
     width: 100%;
     top: 86px;
     left: 0px;
+    width: 300px;
   }
 
   .modal__image {
@@ -178,6 +181,7 @@
     top: 89px;
     left: 16px;
     border-radius: 4px;
+    max-width: fit-content;
   }
 
   .modal__container-preview {
@@ -185,8 +189,14 @@
   }
 
   .modal__close-btn {
-    top: 22px;
-    right: 12px;
+    top: 12px;
+    left: 248px;
+    width: 40px;
+    height: 40px;
+    opacity: 40%;
+    border: none;
+
+    background-repeat: no-repeat;
   }
 
   .modal__close-btn_type_preview {
@@ -195,20 +205,21 @@
   .modal__caption {
     font-size: 16px;
     line-height: 19.2px;
-    margin: 10px 0;
   }
 
   .modal__title {
     font-family: Poppins, Arial, Helvetica, sans-serif;
     font-size: 20px;
-    margin: 10px 0 34px;
-    line-height: 1;
+    /*margin: 10px 0 34px;*/
+    line-height: 20px;
+    margin-bottom: 34px;
   }
 
   .modal__label {
     font-family: Poppins, Arial, Helvetica, sans-serif;
-    margin-bottom: 24px;
-    font-size: 18px;
+    /*margin-bottom: 24px;*/
+    line-height: 17.6px;
+    font-size: 16px;
     width: 100%;
     color: #212121;
   }
@@ -222,9 +233,4 @@
   .modal__submit-btn {
     width: 100%;
   }
-}
-
-@media screen and (orientation: portrait) {
-}
-@media screen and (orientation: landscape) {
 }
