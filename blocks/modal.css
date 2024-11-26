@@ -190,7 +190,7 @@
 
   .modal__close-btn {
     top: 12px;
-    left: 264px;
+    left: 248px;
     width: 40px;
     height: 40px;
     opacity: 40%;
@@ -201,6 +201,8 @@
 
   .modal__close-btn_type_preview {
     top: -35px;
+
+    left: 265px;
   }
   .modal__caption {
     font-size: 16px;
@@ -210,14 +212,14 @@
   .modal__title {
     font-family: Poppins, Arial, Helvetica, sans-serif;
     font-size: 20px;
-    /*margin: 10px 0 34px;*/
+
     line-height: 20px;
     margin-bottom: 34px;
   }
 
   .modal__label {
     font-family: Poppins, Arial, Helvetica, sans-serif;
-    /*margin-bottom: 24px;*/
+
     line-height: 17.6px;
     font-size: 16px;
     width: 100%;
