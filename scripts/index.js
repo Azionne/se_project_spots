@@ -111,6 +111,7 @@ function handleEditFormSubmit(evt) {
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
   closeModal(editModal);
+  evt.target.reset();
 }
 
 function handleAddCardSubmit(evt) {
@@ -120,7 +121,6 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
 
-  evt.target.reset();
   closeModal(cardModal);
 }
 
