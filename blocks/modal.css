@@ -161,11 +161,11 @@
 
 @media screen and (max-width: 627px) {
   .modal {
-    padding: 0 10px;
+    padding: 22px;
   }
 
   .modal__container {
-    padding: 12px 12px;
+    padding: 22px 12px 12px;
     border-radius: 8px;
     max-width: 730px;
     width: 100%;
@@ -185,14 +185,8 @@
   }
 
   .modal__close-btn {
-    top: 8px;
-    left: 269px;
-    width: 40px;
-    height: 40px;
-    opacity: 40%;
-    border: none;
-
-    background-repeat: no-repeat;
+    top: 22px;
+    right: 12px;
   }
 
   .modal__close-btn_type_preview {
@@ -201,6 +195,7 @@
   .modal__caption {
     font-size: 16px;
     line-height: 19.2px;
+    margin: 10px 0;
   }
 
   .modal__title {
