@@ -80,7 +80,6 @@
   cursor: pointer;
   background-repeat: no-repeat;
   transition: opacity 0.3s ease;
-
   border: none;
 }
 
@@ -120,22 +119,43 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 1;
-  margin-bottom: 32px;
-  color: #212121;
+  margin-top: 32px;
 }
 
 .modal__input {
   font-family: Poppins, Arial, Helvetica, sans-serif;
   font-size: 20px;
-  line-height: 1;
+  line-height: 17px;
   padding: 16px 12px;
   border-radius: 8px;
   border: 1px solid rgba(33, 33, 33, 0.4);
   object-fit: cover;
   font-weight: 500;
+  color: #212121;
+  margin-top: 20px;
 }
+
+.modal__input::placeholder {
+  color: #212121;
+  opacity: 30%;
+}
+
 .modal__input:hover {
   cursor: pointer;
+}
+
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
+.modal__error {
+  display: block;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: red;
+  margin-bottom: 32px;
+  margin-top: 5px;
 }
 
 .modal__submit-btn {
@@ -153,6 +173,12 @@
 .modal__submit-btn:hover {
   opacity: 80%;
   cursor: pointer;
+}
+
+.modal__submit-btn_disable {
+  color: #212121;
+  background-color: grey;
+  opacity: 50%;
 }
 
 @media screen and (max-width: 627px) {
