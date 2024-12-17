@@ -132,10 +132,6 @@ function handleEditFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
-<<<<<<< HEAD
-=======
-  closeModal(editModal);
->>>>>>> c9f252dbddb1c5dc0b12d50a4a5a7284a4ff5f55
 }
 
 function handleAddCardSubmit(evt) {
@@ -145,6 +141,7 @@ function handleAddCardSubmit(evt) {
   cardsList.prepend(cardElement);
   disableButton(cardSubmitButton, settings);
   closeModal(cardModal);
+  evt.target.reset();
 }
 
 //Modal events
