@@ -7,50 +7,53 @@ const settings = {
   errorClass: "modal__error",
 };
 
-const showInputError = (formElement, inputElement, errorMsg, config) => {
+const showInputError = (
+  formElement,
+  inputElement,
+  errorMsg,
+  inputErrorClass
+) => {
   const errorMsgElement = formElement.querySelector(
     `#${inputElement.id}-error`
   );
-  inputElement.classList.add(config.inputErrorClass);
   errorMsgElement.textContent = errorMsg;
-  errorMsgElement.classList.add(config.errorClass);
+  inputElement.classList.add(inputErrorClass);
 };
 
-const hideInputError = (formElement, inputElement, config) => {
+const hideInputError = (formElement, inputElement, inputErrorClass) => {
   const errorMsgElement = formElement.querySelector(
     `#${inputElement.id}-error`
   );
-  inputElement.classList.remove(config.inputErrorClass);
   errorMsgElement.textContent = "";
-  errorMsgElement.classList.remove(config.errorClass);
+  inputElement.classList.remove(inputErrorClass);
 };
 
-const checkInputValidity = (formElement, inputElement, config) => {
+const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
-    showInputError(
-      formElement,
-      inputElement,
-      inputElement.validationMessage,
-      config
-    );
+    showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
-    hideInputError(formElement, inputElement, config);
+    hideInputError(formElement, inputElement);
   }
+};
+
+const hasInvalidInput = (inputList) => {
+  return inputList.some((input) => {
+    return !input.validity.valid;
+  });
 };
 
 const toggleButtonState = (inputList, buttonElement, config) => {
-  const hasInvalidInput = (inputList, config) => {
-    return inputList.some((input) => {
-      return !input.validity.valid;
-    });
-  };
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(config.inactiveButtonClass);
-    buttonElement.disabled = true;
+    disableButton(buttonElement, config);
   } else {
-    buttonElement.classList.remove(config.inactiveButtonClass);
     buttonElement.disabled = false;
+    buttonElement.classList.remove(config.inactiveButtonClass);
   }
+};
+
+const disableButton = (buttonElement, config) => {
+  buttonElement.disabled = true;
+  buttonElement.classList.add(config.inactiveButtonClass);
 };
 
 const resetValidation = (formElement, inputList) => {
@@ -58,6 +61,8 @@ const resetValidation = (formElement, inputList) => {
     hideInputError(formElement, input);
   });
 };
+
+// use settings object in all functions of hard-coded strings
 
 const setEventListeners = (formElement, config) => {
   const inputList = Array.from(
@@ -75,7 +80,8 @@ const setEventListeners = (formElement, config) => {
   });
 };
 
-const enableValidation = (config) => {
+enableValidation = (config) => {
+  console.log(config.formSelector);
   const formList = document.querySelectorAll(config.formSelector);
   formList.forEach((formElement) => {
     setEventListeners(formElement, config);

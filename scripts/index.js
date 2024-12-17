@@ -98,11 +98,32 @@ function getCardElement(data) {
 
 //Open and close edit modal functions
 function openModal(modal) {
+  if (modal === editModal) {
+    editModalNameInput.value = profileName.textContent;
+    editModalDescriptionInput.value = profileDescription.textContent;
+  }
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalEsc);
+  modal.addEventListener("mousedown", closeModalOverlay);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.addEventListener("keydown", closeModalEsc);
+  modal.removeEventListener("mousedown", closeModalOverlay);
+}
+
+function closeModalOverlay(evt) {
+  if (evt.target.classList.contains("modal") && !evt.target.closest("input")) {
+    closeModal(evt.target);
+  }
+}
+
+function closeModalEsc(evt) {
+  if (evt.key === "Escape") {
+    const modal = document.querySelector(".modal_opened");
+    closeModal(modal);
+  }
 }
 
 //Form submit event
@@ -111,8 +132,6 @@ function handleEditFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
-  closeModal(editModal);
-  evt.target.reset();
 }
 
 function handleAddCardSubmit(evt) {
