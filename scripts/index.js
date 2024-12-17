@@ -103,27 +103,10 @@ function openModal(modal) {
     editModalDescriptionInput.value = profileDescription.textContent;
   }
   modal.classList.add("modal_opened");
-  document.addEventListener("keydown", closeModalEsc);
-  modal.addEventListener("mousedown", closeModalOverlay);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  document.addEventListener("keydown", closeModalEsc);
-  modal.removeEventListener("mousedown", closeModalOverlay);
-}
-
-function closeModalOverlay(evt) {
-  if (evt.target.classList.contains("modal") && !evt.target.closest("input")) {
-    closeModal(evt.target);
-  }
-}
-
-function closeModalEsc(evt) {
-  if (evt.key === "Escape") {
-    const modal = document.querySelector(".modal_opened");
-    closeModal(modal);
-  }
 }
 
 //Form submit event
