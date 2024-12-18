@@ -152,10 +152,11 @@
   display: block;
   font-family: Poppins, Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-size: 16px;
-  color: red;
-  margin-bottom: 32px;
-  margin-top: 5px;
+  font-size: 18px;
+  color: rgba(255, 0, 0, 0.7);
+  line-height: 17.6px;
+  display: block;
+  margin-top: 8px;
 }
 
 .modal__submit-btn {
@@ -239,7 +240,6 @@
 
   .modal__label {
     font-family: Poppins, Arial, Helvetica, sans-serif;
-
     line-height: 17.6px;
     font-size: 16px;
     width: 100%;
@@ -250,9 +250,16 @@
     font-family: Poppins, Arial, Helvetica, sans-serif;
     font-size: 16px;
     line-height: 1;
+    margin-top: 8px;
   }
 
   .modal__submit-btn {
     width: 100%;
+  }
+
+  .modal__error {
+    margin-top: 8px;
+    margin-bottom: 24px;
+    font-size: 16px;
   }
 }
