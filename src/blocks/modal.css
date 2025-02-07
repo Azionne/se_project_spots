@@ -65,7 +65,7 @@
 }
 
 .modal__close-btn {
-  background-image: url(../images/close-default.svg);
+  background-image: url(..src/images/close-default.svg);
   background-color: transparent;
   position: absolute;
   border: none;
@@ -76,7 +76,7 @@
 }
 
 .modal__close-btn:hover {
-  background-image: url(../images/close-hover.svg);
+  background-image: url(..src/images/close-hover.svg);
   cursor: pointer;
   background-repeat: no-repeat;
   transition: opacity 0.3s ease;
@@ -84,7 +84,7 @@
 }
 
 .modal__close-btn_type_preview {
-  background-image: url(../images/modal\ preview\ default\ close.svg);
+  background-image: url(..src/images/modal\ preview\ default\ close.svg);
   background-color: transparent;
   top: -4px;
   right: -53px;
@@ -92,7 +92,7 @@
 }
 
 .modal__close-btn_type_preview:hover {
-  background-image: url(../images/modal\ preview\ hover\ close.svg);
+  background-image: url(..src/images/modal\ preview\ hover\ close.svg);
   cursor: pointer;
   background-repeat: no-repeat;
   transition: opacity 0.3s ease;

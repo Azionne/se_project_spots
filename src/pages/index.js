@@ -1,6 +1,16 @@
 import "./index.css";
 import "../blocks/profile.css";
+import "../blocks/modal.css"; // Ensure this line is present if you have modal.css
 import { enableValidation, settings } from "../scripts/validation.js";
+import logo from "../images/Logo.svg";
+import avatar from "../images/avatar.jpg";
+import editIcon from "../images/edit-icon.svg";
+import addIcon from "../images/add-icon.svg";
+
+document.querySelector(".header__logo").src = logo;
+document.querySelector(".profile__avatar").src = avatar;
+document.querySelector(".profile__edit-btn img").src = editIcon;
+document.querySelector(".profile__add-btn img").src = addIcon;
 
 const initialCards = [
   {
@@ -104,19 +114,18 @@ function getCardElement(data) {
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeModalEsc);
-  modal.addEventListener("mousedown", closeModalOverlay);
+  modal.addEventListener("click", closeModalOverlay);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalEsc);
-
-  modal.removeEventListener("mousedown", closeModalOverlay);
+  modal.removeEventListener("click", closeModalOverlay);
 }
 
 function closeModalOverlay(evt) {
-  if (evt.target.classList.contains("modal")) {
-    closeModal(evt.target);
+  if (evt.currentTarget.classList.contains("modal")) {
+    closeModal(evt.currentTarget);
   }
 }
 
@@ -152,10 +161,7 @@ function handleAddCardSubmit(evt) {
 profileEditBtn.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
-  resetValidation(editFormElement, [
-    editModalNameInput,
-    editModalDescriptionInput,
-  ]);
+
   openModal(editModal);
 });
 
@@ -182,9 +188,3 @@ initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.prepend(cardElement);
 });
-
-function helloWorld() {
-  console.log("Hello World");
-}
-
-enableValidation(settings);
