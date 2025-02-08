@@ -1,6 +1,5 @@
 import "./index.css";
 import "../blocks/profile.css";
-import "../blocks/modal.css"; // Ensure this line is present if you have modal.css
 import { enableValidation, settings } from "../scripts/validation.js";
 import logo from "../images/Logo.svg";
 import avatar from "../images/avatar.jpg";
