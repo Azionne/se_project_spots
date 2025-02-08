@@ -1,15 +1,10 @@
-import "./index.css";
-import "../blocks/profile.css";
-import { enableValidation, settings } from "../scripts/validation.js";
-import logo from "../images/Logo.svg";
-import avatar from "../images/avatar.jpg";
-import editIcon from "../images/edit-icon.svg";
-import addIcon from "../images/add-icon.svg";
-
-document.querySelector(".header__logo").src = logo;
-document.querySelector(".profile__avatar").src = avatar;
-document.querySelector(".profile__edit-btn img").src = editIcon;
-document.querySelector(".profile__add-btn img").src = addIcon;
+import "..pages/index.css";
+import {
+  enableValidation,
+  settings,
+  //disableButton,
+  //resetValidation,
+} from "../scripts/validation.js";
 
 const initialCards = [
   {
@@ -191,3 +186,4 @@ initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.prepend(cardElement);
 });
+enableValidation(settings);
