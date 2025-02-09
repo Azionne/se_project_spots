@@ -5,6 +5,8 @@ import {
   resetValidation,
 } from "../scripts/validation.js";
 
+import Api from "../utils/Api.js";
+
 const initialCards = [
   {
     name: "Val Thorens",
@@ -18,6 +20,7 @@ const initialCards = [
     name: "An outdoor cafe",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
   },
+
   {
     name: "A very long bridge, over the forest and through the trees...",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
@@ -36,13 +39,35 @@ const initialCards = [
   },
 ];
 
-// Profile elements
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "b153d9fc-c51e-4857-889a-c4e4f22bc733",
+    "Content-Type": "application/json",
+  },
+});
+
+api
+  .getAppInfo()
+  .then(([cards, userInfo]) => {
+    document.querySelector(".profile__avatar").src = userInfo.avatar;
+    profileName.textContent = userInfo.name;
+    //profileDescription.textContent = userInfo.about;
+
+    cards.forEach((item) => {
+      const cardElement = getCardElement(item);
+      cardsList.append(cardElement);
+    });
+  })
+  .catch(console.error);
+
+//Profile elements
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const cardModalBtn = document.querySelector(".profile__add-btn");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 
-// Modal elements
+//Modal elements
 const editModal = document.querySelector("#edit-modal");
 const editFormElement = editModal.querySelector(".modal__form");
 const closeModalBtn = editModal.querySelector(".modal__close-btn");
@@ -51,7 +76,7 @@ const editModalDescriptionInput = editModal.querySelector(
   "#profile-description-input"
 );
 
-// Add Card modal elements
+//Add Card modal elements
 const cardModal = document.querySelector("#add-card-modal");
 const cardForm = cardModal.querySelector(".modal__form");
 const cardSubmitButton = cardModal.querySelector(".modal__submit-btn");
@@ -102,7 +127,7 @@ function getCardElement(data) {
   return cardElement;
 }
 
-// Open and close edit modal functions
+//Open and close edit modal functions
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeModalEsc);
@@ -112,6 +137,7 @@ function openModal(modal) {
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalEsc);
+
   modal.removeEventListener("mousedown", closeModalOverlay);
 }
 
@@ -128,7 +154,7 @@ function closeModalEsc(evt) {
   }
 }
 
-// Form submit event
+//Form submit event
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
@@ -148,7 +174,7 @@ function handleAddCardSubmit(evt) {
   evt.target.reset();
 }
 
-// Modal events
+//Modal events
 
 profileEditBtn.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
@@ -183,5 +209,9 @@ initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.prepend(cardElement);
 });
+
+function helloWorld() {
+  console.log("Hello World");
+}
 
 enableValidation(settings);
