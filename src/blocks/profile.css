@@ -8,11 +8,19 @@
 
 .profile__avatar-container {
   position: relative;
+  display: flex;
+  margin-right: 20px;
+}
+
+.profile__avatar {
+  height: 120px;
+  width: 120px;
+
+  object-fit: cover;
 }
 
 .profile__avatar-btn {
   position: absolute;
-
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -22,10 +30,13 @@
   bottom: 10px;
   gap: 8px;
   right: 15px;
+  width: 100%;
+  length: 100%;
 }
 
 .profile__avatar-container:hover .profile__avatar-btn {
   visibility: visible;
+  cursor: pointer;
 }
 
 .profile__avatar-btn::after {
@@ -123,6 +134,12 @@
 
   .profile__avatar-btn {
     visibility: visible;
+    background: transparent;
+    width: 23.34px;
+    height: 23.34px;
+    border-radius: 6px;
+    top: 52px;
+    left: 52px;
   }
 
   .profile__avatar-btn::after {
@@ -133,13 +150,13 @@
     margin-right: 0;
     height: 80px;
     width: 80px;
-    margin-bottom: 12px;
-    margin: 0 0 12px;
+    /*margin-bottom: 12px;
+    margin: 0 0 12px; */
   }
 
   .profile__name {
     font-size: 20px;
-    margin: 0 0 6px;
+    margin: 12px 0 6px;
     max-width: 288px;
   }
 

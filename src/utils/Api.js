@@ -71,20 +71,20 @@ class Api {
     });
   }
 
-  deleteCard(id) {
-    return fetch(`${this._baseUrl}/cards/${id}`, {
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => {
       if (res.ok) {
         return res.json();
       }
-      Promise.reject(`Error: ${res.status}`);
+      return Promise.reject(`Error: ${res.status}`);
     });
   }
 
   changeLikeStatus(cardId, isLiked) {
-    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: isLiked ? "PUT" : "DELETE",
       headers: this._headers,
     }).then((res) => {

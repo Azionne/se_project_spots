@@ -9,6 +9,8 @@ import Api from "../utils/Api.js";
 
 import { setButtonText, setDeleteButtonText } from "../utils/helpers.js";
 
+// Card list
+
 const initialCards = [
   {
     name: "Val Thorens",
@@ -60,6 +62,15 @@ api
       const cardElement = getCardElement(item);
       cardsList.append(cardElement);
     });
+
+    //I've tried adding my initial array variable to display but I get Error for "DELETE"
+    // Without adding the array the delete and like functions work fine but when adding initial cards it has undefined
+    //in api url
+
+    /*initialCards.forEach((item) => {
+      const cardElement = getCardElement(item);
+      cardsList.append(cardElement);
+    }); */
   })
   .catch(console.error);
 
@@ -72,9 +83,12 @@ const profileDescription = document.querySelector(".profile__description");
 
 // Avatar modal elements
 const avatarModal = document.querySelector("#avatar-modal");
-const avatarForm = avatarModal.querySelector(".modal__form");
+const avatarForm = avatarModal.querySelector(".modal__form-avatar");
 const avatarSubmitButton = avatarModal.querySelector(".modal__submit-btn");
-const avatarModalClosedBtn = avatarModal.querySelector(".modal__close-btn");
+const avatarModalClosedBtn = avatarModal.querySelector(
+  ".modal__close-button-avatar"
+);
+
 const avatarLinkInput = avatarModal.querySelector("#profile-avatar-input");
 
 // Modal elements
@@ -89,7 +103,7 @@ const editModalDescriptionInput = editModal.querySelector(
 // Delete Card modal elements
 const deleteModal = document.querySelector("#delete-modal");
 const deleteModalForm = document.querySelector("#delete-form");
-const deleteCloseBtn = document.querySelector(".modal__close_type-delete");
+const deleteCloseBtn = document.querySelector(".modal__close-btn-delete");
 const cancelBtn = document.querySelector(".modal__cancel-button");
 
 let selectedCard = null;
@@ -113,7 +127,7 @@ const previewModalCloseBtn = previewModal.querySelector(
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
-// Card Functions
+// Card template function
 function getCardElement(data) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
@@ -134,9 +148,11 @@ function getCardElement(data) {
   cardImageEl.alt = data.name;
 
   cardLikeBtn.addEventListener("click", (evt) => handleLike(evt, data._id));
-  cardDeleteBtn.addEventListener("click", () =>
-    handleDeleteCard(cardElement, data._id)
-  );
+  cardDeleteBtn.addEventListener("click", () => {
+    console.log("data", data);
+    handleDeleteCard(cardElement, data._id);
+    selectedCardId = data._id;
+  });
   cardImageEl.addEventListener("click", () => handleImageClick(data));
 
   return cardElement;
@@ -177,6 +193,8 @@ function handleDeleteCard(cardElement, cardId) {
 
 function handleLike(evt, id) {
   const isLiked = evt.target.classList.contains("card__like-btn_liked");
+
+  //Like status api
 
   api
     .changeLikeStatus(id, !isLiked)
@@ -256,6 +274,7 @@ function handleDeleteSubmit(evt) {
   evt.preventDefault();
   const deleteButton = evt.submitter;
   setDeleteButtonText(deleteButton, true, "Delete", "Deleting...");
+  console.log("Deleting card ID:", selectedCardId);
   api
     .deleteCard(selectedCardId)
     .then(() => {
@@ -283,7 +302,7 @@ cancelBtn.addEventListener("click", () => {
   closeModal(deleteModal);
 });
 
-// Modal events
+// Modal eventlisteners
 profileEditBtn.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
@@ -314,19 +333,16 @@ avatarAddBtn.addEventListener("click", () => {
   openModal(avatarModal);
 });
 
-/*avatarModalClosedBtn.addEventListener("click", () => {
+avatarModalClosedBtn.addEventListener("click", () => {
   closeModal(avatarModal);
-}); */
+});
 
-//avatarForm.addEventListener("submit", handleAvatarSubmit);
+avatarForm.addEventListener("submit", handleAvatarSubmit);
 
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
 deleteModalForm.addEventListener("submit", handleDeleteSubmit);
 
-initialCards.forEach((item) => {
-  const cardElement = getCardElement(item);
-  cardsList.prepend(cardElement);
-});
+// Removed initialCards rendering
 
 enableValidation(settings);
