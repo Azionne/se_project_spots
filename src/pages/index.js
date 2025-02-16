@@ -11,6 +11,28 @@ import Api from "../utils/Api.js";
 import { setButtonText, setDeleteButtonText } from "../utils/helpers.js";
 
 const profileAvatar = document.querySelector(".profile__avatar");
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "b153d9fc-c51e-4857-889a-c4e4f22bc733",
+    "Content-Type": "application/json",
+  },
+});
+
+api
+  .getAppInfo()
+  .then(([cards, userInfo]) => {
+    document.querySelector(".profile__avatar").src = userInfo.avatar;
+    profileName.textContent = userInfo.name;
+    profileDescription.textContent = userInfo.about;
+    console.log("userInfo:", userInfo);
+
+    cards.forEach((item) => {
+      const cardElement = getCardElement(item);
+      cardsList.append(cardElement);
+    });
+  })
+  .catch(console.error);
 
 // Profile elements
 const profileEditBtn = document.querySelector(".profile__edit-btn");
