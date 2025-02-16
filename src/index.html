@@ -167,36 +167,27 @@
     </div>
 
     <div class="modal" id="avatar-modal">
-      <div class="modal__container modal__container-avatar">
-        <button
-          type="button"
-          class="modal__close-button modal__close-button-avatar"
-        ></button>
+      <div class="modal__container">
+        <button type="button" class="modal__close-btn"></button>
 
-        <h2 class="modal__title modal__title-avatar">Edit Profile Avatar</h2>
+        <h2 class="modal__title">Edit Profile Avatar</h2>
 
         <form class="modal__form-avatar" id="edit-avatar-form">
-          <label
-            for="profile-avatar-input"
-            class="modal__label modal__label-avatar"
-          >
+          <label for="profile-avatar-input" class="modal__label">
             Profile Picture
             <input
               id="profile-avatar-input"
               type="url"
-              class="modal__input modal__input-avatar"
+              class="modal__input"
               name="avatar"
               placeholder="Paste a link to an image"
               required
             />
-            <span id="profile-avatar-input-error" class="modal__error"></span>
+            <span id="profile-avatar-input-error" class="modal__error"
+              >Please enter a url</span
+            >
           </label>
-          <button
-            type="submit"
-            class="modal__submit-button modal__submit-button-avatar"
-          >
-            Save
-          </button>
+          <button type="submit" class="modal__submit-btn">Save</button>
         </form>
       </div>
     </div>

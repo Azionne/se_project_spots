@@ -81,13 +81,11 @@ const avatarAddBtn = document.querySelector(".profile__avatar-btn");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 
-// Avatar modal elements
+// Avatar modal/form elements
 const avatarModal = document.querySelector("#avatar-modal");
 const avatarForm = avatarModal.querySelector(".modal__form-avatar");
-const avatarSubmitButton = avatarModal.querySelector(".modal__submit-btn");
-const avatarModalClosedBtn = avatarModal.querySelector(
-  ".modal__close-button-avatar"
-);
+const avatarModalSubmitButton = avatarModal.querySelector(".modal__submit-btn");
+const avatarModalClosedBtn = avatarModal.querySelector(".modal__close-btn");
 
 const avatarLinkInput = avatarModal.querySelector("#profile-avatar-input");
 
@@ -255,7 +253,7 @@ function handleAddCardSubmit(evt) {
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
-  const avatarModalSubmitButton = evt.submitter;
+  const avatarSubmitButton = evt.submitter;
   setButtonText(avatarModalSubmitButton, true, "Save", "Saving...");
   api
     .editAvatarInfo(avatarLinkInput.value)

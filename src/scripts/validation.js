@@ -1,18 +1,3 @@
-// src/scripts/validation.js
-
-export function enableValidation(config) {
-  const formList = document.querySelectorAll(config.formSelector);
-  formList.forEach((formElement) => {
-    setEventListeners(formElement, config);
-  });
-}
-
-export function resetValidation(formElement, inputElements) {
-  inputElements.forEach((input) => {
-    hideInputError(formElement, input);
-  });
-}
-
 export const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -33,6 +18,7 @@ const showInputError = (
   );
   errorMsgElement.textContent = errorMsg;
   inputElement.classList.add(inputErrorClass);
+  errorMsgElement.classList.add(settings.errorClass);
 };
 
 const hideInputError = (formElement, inputElement, inputErrorClass) => {
@@ -41,6 +27,7 @@ const hideInputError = (formElement, inputElement, inputErrorClass) => {
   );
   errorMsgElement.textContent = "";
   inputElement.classList.remove(inputErrorClass);
+  errorMsgElement.classList.remove(settings.errorClass);
 };
 
 const checkInputValidity = (formElement, inputElement, config) => {
@@ -89,3 +76,19 @@ const setEventListeners = (formElement, config) => {
     });
   });
 };
+
+export function enableValidation(config) {
+  const formList = document.querySelectorAll(config.formSelector);
+  formList.forEach((formElement) => {
+    setEventListeners(formElement, config);
+  });
+}
+
+export function resetValidation(formElement, inputElements) {
+  inputElements.forEach((input) => {
+    hideInputError(formElement, input, settings.inputErrorClass);
+  });
+}
+
+// Enable validation for all forms
+enableValidation(settings);

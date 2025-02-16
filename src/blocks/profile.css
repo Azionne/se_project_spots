@@ -20,18 +20,17 @@
 }
 
 .profile__avatar-btn {
-  position: absolute;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  visibility: hidden;
+  position: absolute;
   background: transparent;
+  visibility: hidden;
   border: none;
   bottom: 10px;
-  gap: 8px;
   right: 15px;
-  width: 100%;
-  length: 100%;
+  gap: 8px;
+  height: 100%;
 }
 
 .profile__avatar-container:hover .profile__avatar-btn {
@@ -42,7 +41,7 @@
 .profile__avatar-btn::after {
   content: "Edit Avatar";
   font-family: Poppins;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 16px;
   text-align: left;

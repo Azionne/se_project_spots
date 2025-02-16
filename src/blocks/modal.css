@@ -84,7 +84,7 @@
 }
 
 .modal__close-btn_type_preview {
-  background-image: url(../images/close-default.svg); /* Corrected path */
+  background-image: url(../images/close-light.svg); /* Corrected path */
   background-color: transparent;
   top: -4px;
   right: -53px;
@@ -156,6 +156,11 @@
   line-height: 17.6px;
   display: block;
   margin-top: 8px;
+}
+
+.modal__error_hidden {
+  display: none;
+  height: 0;
 }
 
 .modal__submit-btn {
