@@ -10,7 +10,6 @@ import Api from "../utils/Api.js";
 
 import { setButtonText, setDeleteButtonText } from "../utils/helpers.js";
 
-const profileAvatar = document.querySelector(".profile__avatar");
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
@@ -22,9 +21,11 @@ const api = new Api({
 api
   .getAppInfo()
   .then(([cards, userInfo]) => {
+    profileAvatar.src = userInfo.avatar;
     document.querySelector(".profile__avatar").src = userInfo.avatar;
     profileName.textContent = userInfo.name;
     profileDescription.textContent = userInfo.about;
+
     console.log("userInfo:", userInfo);
 
     cards.forEach((item) => {
@@ -42,6 +43,7 @@ const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 
 // Avatar modal/form elements
+const profileAvatar = document.querySelector(".profile__avatar");
 const avatarModal = document.querySelector("#avatar-modal");
 const avatarForm = avatarModal.querySelector(".modal__form-avatar");
 const avatarModalSubmitButton = avatarModal.querySelector(".modal__submit-btn");
@@ -221,6 +223,7 @@ function handleAvatarSubmit(evt) {
       profileAvatar.src = data.avatar;
       closeModal(avatarModal);
       avatarForm.reset();
+      disableButton(avatarModalSubmitButton, settings);
     })
     .catch(console.error)
     .finally(() => {
