@@ -45,7 +45,7 @@ const profileDescription = document.querySelector(".profile__description");
 // Avatar modal/form elements
 const profileAvatar = document.querySelector(".profile__avatar");
 const avatarModal = document.querySelector("#avatar-modal");
-const avatarForm = avatarModal.querySelector(".modal__form-avatar");
+const avatarForm = avatarModal.querySelector(".modal__form");
 const avatarModalSubmitButton = avatarModal.querySelector(".modal__submit-btn");
 const avatarModalClosedBtn = avatarModal.querySelector(".modal__close-btn");
 
