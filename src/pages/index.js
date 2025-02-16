@@ -3,76 +3,14 @@ import {
   enableValidation,
   settings,
   resetValidation,
+  disableButton,
 } from "../scripts/validation.js";
 
 import Api from "../utils/Api.js";
 
 import { setButtonText, setDeleteButtonText } from "../utils/helpers.js";
 
-// Card list
-
-/*const initialCards = [
-  {
-    name: "Val Thorens",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
-  },
-  {
-    name: "Restaurant terrace",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
-  },
-  {
-    name: "An outdoor cafe",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
-  },
-  {
-    name: "A very long bridge, over the forest and through the trees...",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
-  },
-  {
-    name: "Tunnel with morning light",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
-  },
-  {
-    name: "Mountain house",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
-  },
-  {
-    name: "Golden Gate Bridge",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
-  },
-];*/
-
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "b153d9fc-c51e-4857-889a-c4e4f22bc733",
-    "Content-Type": "application/json",
-  },
-});
-
-api
-  .getAppInfo()
-  .then(([cards, userInfo]) => {
-    document.querySelector(".profile__avatar").src = userInfo.avatar;
-    profileName.textContent = userInfo.name;
-    profileDescription.textContent = userInfo.about;
-    console.log("userInfo:", userInfo);
-
-    cards.forEach((item) => {
-      const cardElement = getCardElement(item);
-      cardsList.append(cardElement);
-    });
-
-    //I've tried adding my initial array variable to display but I get Error for "DELETE"
-    // Without adding the array the delete and like functions work fine but when adding initial cards it has undefined
-    //in api url
-
-    /* initialCards.forEach((item) => {
-      const cardElement = getCardElement(item);
-      cardsList.append(cardElement);
-    }); */
-  })
-  .catch(console.error);
+const profileAvatar = document.querySelector(".profile__avatar");
 
 // Profile elements
 const profileEditBtn = document.querySelector(".profile__edit-btn");
@@ -258,7 +196,7 @@ function handleAvatarSubmit(evt) {
   api
     .editAvatarInfo(avatarLinkInput.value)
     .then((data) => {
-      document.querySelector(".profile__avatar").src = data.avatar;
+      profileAvatar.src = data.avatar;
       closeModal(avatarModal);
       avatarForm.reset();
     })
@@ -283,12 +221,6 @@ function handleDeleteSubmit(evt) {
     .finally(() => {
       setDeleteButtonText(deleteButton, false, "Delete", "Deleting...");
     });
-}
-
-// Disable button function
-function disableButton(button, settings) {
-  button.disabled = true;
-  button.classList.add(settings.inactiveButtonClass);
 }
 
 // Event listeners for delete modal buttons
@@ -340,7 +272,5 @@ avatarForm.addEventListener("submit", handleAvatarSubmit);
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
 deleteModalForm.addEventListener("submit", handleDeleteSubmit);
-
-// Removed initialCards rendering
 
 enableValidation(settings);

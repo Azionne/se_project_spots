@@ -106,6 +106,7 @@
   font-weight: 500;
   max-width: 169px;
   margin: 0 0 32px;
+  white-space: nowrap;
 }
 
 .modal__label {
