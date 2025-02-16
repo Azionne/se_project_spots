@@ -22,7 +22,7 @@ api
   .getAppInfo()
   .then(([cards, userInfo]) => {
     profileAvatar.src = userInfo.avatar;
-    document.querySelector(".profile__avatar").src = userInfo.avatar;
+
     profileName.textContent = userInfo.name;
     profileDescription.textContent = userInfo.about;
 
