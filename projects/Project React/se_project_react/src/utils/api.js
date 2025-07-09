@@ -1,5 +1,5 @@
 // Configuration for different backends
-const EXPRESS_BASE_URL = "http://localhost:3001"; // Express backend
+import { EXPRESS_BASE_URL } from "../utils/constants"; // Express backend
 const JSON_SERVER_BASE_URL = "http://localhost:3003"; // JSON server for testing
 
 // Set this to true to use JSON server, false to use Express backend
